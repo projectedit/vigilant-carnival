@@ -1,6 +1,9 @@
 from robocorp.tasks import task
+from task.news_scraper import NewsScraperBot
+
 
 @task
-def minimal_task():
-    message = "Hello"
-    message = message + " World!"
+def main():
+
+    bot = NewsScraperBot()
+    bot.run()
