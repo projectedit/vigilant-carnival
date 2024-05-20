@@ -12,6 +12,9 @@ class BrowserHandler:
         print(self.browser.get_window_size(True)[0])
         print(self.browser.get_window_size(True))
 
+        self.browser.set_window_size(640,827)
+
+
     def search_phrase(self, phrase):
         
         if self.browser.get_window_size(True)[0] < 992:    
@@ -22,8 +25,14 @@ class BrowserHandler:
         else: 
             self.browser.click_button('css=button.no-styles-button')
             self.browser.wait_until_page_contains_element("css=input.search-bar__input")
-            self.browser.input_text('css=input.search-bar__input', "technology")
-            self.browser.press_keys('css=input.search-bar__input', 'ENTER')
+            # self.browser.input_text('css=input.search-bar__input', "technology")
+            # self.browser.press_keys('css=input.search-bar__input', 'ENTER')
+            # Input text into the search input field
+            self.browser.input_text("css=input.search-bar__input", "technology")
+
+# Click the search button to submit the form
+            self.browser.click_button("css=.search-bar__button button[type='submit']")
+
                 
 
     def filter_category(self, category):
