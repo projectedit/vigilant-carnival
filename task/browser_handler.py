@@ -11,7 +11,7 @@ class BrowserHandler:
 
         try:
             self.browser.click_button('css=button.no-styles-button')
-            self.browser.input_text('css=input.search-bar__input')
+            self.browser.input_text('css=input.search-bar__input', "technology")
         except Exception :
             self.browser.click_button('css=button[data-testid="menu-trigger"]')
             self.browser.input_text('css=input[role="searchbox"]', 'technology')
