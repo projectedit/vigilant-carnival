@@ -21,6 +21,7 @@ class BrowserHandler:
         
         else: 
             self.browser.click_button('css=button.no-styles-button')
+            self.browser.wait_until_page_contains_element("css=input.search-bar__input")
             self.browser.input_text('css=input.search-bar__input', "technology")
             self.browser.press_keys('css=input.search-bar__input', 'ENTER')
                 
