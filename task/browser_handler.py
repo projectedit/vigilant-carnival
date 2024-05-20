@@ -1,3 +1,4 @@
+from asyncio import wait
 from RPA.Browser.Selenium import Selenium, By
 
 class BrowserHandler:
@@ -7,18 +8,22 @@ class BrowserHandler:
     def open_browser(self, url):
         self.browser.open_available_browser(url)
 
-    def search_phrase(self, phrase):
+        # Set browser window size to screen resolution
+        print(self.browser.get_window_size(True)[0])
+        print(self.browser.get_window_size(True))
 
-        try:
-            self.browser.click_button('css=button.no-styles-button')
-            self.browser.input_text('css=input.search-bar__input', "technology")
-        except Exception :
+    def search_phrase(self, phrase):
+        
+        if self.browser.get_window_size(True)[0] < 992:    
             self.browser.click_button('css=button[data-testid="menu-trigger"]')
             self.browser.input_text('css=input[role="searchbox"]', 'technology')
+            self.browser.press_keys('css=input[role="searchbox"]', 'ENTER')
         
-
-        self.browser.press_keys('css=input[role="searchbox"]', 'ENTER')
-        
+        else: 
+            self.browser.click_button('css=button.no-styles-button')
+            self.browser.input_text('css=input.search-bar__input', "technology")
+            self.browser.press_keys('css=input.search-bar__input', 'ENTER')
+                
 
     def filter_category(self, category):
         # Wait for the dropdown to be present
