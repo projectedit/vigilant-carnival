@@ -11,10 +11,12 @@ class BrowserHandler:
 
         try:
             self.browser.click_button('css=button.no-styles-button')
+            self.browser.input_text('css=input.search-bar__input')
         except Exception :
             self.browser.click_button('css=button[data-testid="menu-trigger"]')
-            
-        self.browser.input_text('css=input[role="searchbox"]', 'technology')
+            self.browser.input_text('css=input[role="searchbox"]', 'technology')
+        
+
         self.browser.press_keys('css=input[role="searchbox"]', 'ENTER')
         
 
