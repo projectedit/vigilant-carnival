@@ -8,8 +8,12 @@ class BrowserHandler:
         self.browser.open_available_browser(url)
 
     def search_phrase(self, phrase):
-        self.browser.wait_until_element_is_visible('css=button[data-testid="menu-trigger"]', timeout=20)
-        self.browser.click_button('css=button[data-testid="menu-trigger"]')
+
+        try:
+            self.browser.click_button('css=button.no-styles-button')
+        except Exception :
+            self.browser.click_button('css=button[data-testid="menu-trigger"]')
+            
         self.browser.input_text('css=input[role="searchbox"]', 'technology')
         self.browser.press_keys('css=input[role="searchbox"]', 'ENTER')
         
